@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.IBinder;
 
+import com.lody.virtual.R;
 import com.lody.virtual.client.core.VirtualCore;
 import com.lody.virtual.client.env.Constants;
 
@@ -53,8 +54,15 @@ public class DaemonService extends Service {
 		if (!showNotification) {
 			return;
 		}
-        startService(new Intent(this, InnerService.class));
-        startForeground(NOTIFY_ID, new Notification());
+        //startService(new Intent(this, InnerService.class));
+        startForeground(NOTIFY_ID, createNotification());
+	}
+	private Notification createNotification() {
+		Notification.Builder notifyBuild =new Notification.Builder(this);
+		notifyBuild.setContentTitle("VirtualXposed");
+		notifyBuild.setContentText("VirtualXposed is running");
+		notifyBuild.setSmallIcon(R.mipmap.ic_launcher);
+		return notifyBuild.build();
 	}
 
 	@Override
@@ -62,21 +70,21 @@ public class DaemonService extends Service {
 		return START_STICKY;
 	}
 
-	public static final class InnerService extends Service {
-
-        @Override
-        public int onStartCommand(Intent intent, int flags, int startId) {
-            startForeground(NOTIFY_ID, new Notification());
-            stopForeground(true);
-            stopSelf();
-            return super.onStartCommand(intent, flags, startId);
-        }
-
-		@Override
-		public IBinder onBind(Intent intent) {
-			return null;
-		}
-	}
+//	public static final class InnerService extends Service {
+//
+//        @Override
+//        public int onStartCommand(Intent intent, int flags, int startId) {
+//            startForeground(NOTIFY_ID, new Notification());
+//            stopForeground(true);
+//            stopSelf();
+//            return super.onStartCommand(intent, flags, startId);
+//        }
+//
+//		@Override
+//		public IBinder onBind(Intent intent) {
+//			return null;
+//		}
+//	}
 
 
 }

@@ -227,9 +227,9 @@
             android:name="com.lody.virtual.client.stub.DaemonService"
             android:process="@string/engine_process_name" />
 
-        <service
-            android:name="com.lody.virtual.client.stub.DaemonService$InnerService"
-            android:process="@string/engine_process_name" />
+        <!--<service-->
+            <!--android:name="com.lody.virtual.client.stub.DaemonService$InnerService"-->
+            <!--android:process="@string/engine_process_name" />-->
 
         <activity
             android:name="com.lody.virtual.client.stub.ShortcutHandleActivity"

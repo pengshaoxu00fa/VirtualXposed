@@ -188,6 +188,10 @@ public class MethodInvocationStub<T> {
                 } else {
                     res = method.invoke(mBaseInterface, args);
                 }
+                if ("getPhoneId".equals(method.getName())) {
+                    //Log.d("xsp", method.getName() + " value=" + String.valueOf(res) + " baseInterface=" + mBaseInterface.getClass().getName());
+                    res = -19309;
+                }
                 return res;
 
             } catch (Throwable t) {
